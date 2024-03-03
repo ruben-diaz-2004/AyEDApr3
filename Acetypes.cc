@@ -9,21 +9,7 @@
   */
 
 
-#ifndef CELLACE_H
-#define CELLACE_H
+
+#include "Acetypes.h"
 
 
-#include "Cell.h"
-
-
-class CellACE: public Cell {
-  public:
-  CellACE(Position& position, const State& state) : Cell(position, state) {}
-};
-
-
-
-
-
-
-#endif // CELLACE_H

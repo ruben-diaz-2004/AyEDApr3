@@ -12,17 +12,14 @@
 #ifndef CELLLIFE_H
 #define CELLLIFE_H
 
-#include <iostream>
+
 #include "cell.h"
 
 
 
 class CellLife: public Cell {
   public:
-  CellLife(const Position&, const State&);
-  void nextState(const Lattice&);
-  void updateState();
-  void display(std::ostream&);
+  CellLife(Position& position, const State& state) : Cell(position, state) {}
 };
 
 

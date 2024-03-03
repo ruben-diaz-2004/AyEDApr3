@@ -9,21 +9,11 @@
   */
 
 
-#ifndef CELLACE_H
-#define CELLACE_H
-
-
-#include "Cell.h"
-
-
-class CellACE: public Cell {
-  public:
-  CellACE(Position& position, const State& state) : Cell(position, state) {}
-};
+#include "Position.h"
 
 
 
-
-
-
-#endif // CELLACE_H
+template <int DIM, class Coordinate_t>
+Coor_t PositionDim<DIM, Coordinate_t>::operator[](unsigned int i) const {
+  return coordinates_[i];
+}

@@ -9,21 +9,19 @@
   */
 
 
-#ifndef CELLACE_H
-#define CELLACE_H
+#ifndef FACTORYCELL_H
+#define FACTORYCELL_H
 
 
 #include "Cell.h"
 
 
-class CellACE: public Cell {
+class FactoryCell {
   public:
-  CellACE(Position& position, const State& state) : Cell(position, state) {}
+  virtual Cell* createCell(const Position& position, const State& state) = 0;
 };
 
 
 
 
-
-
-#endif // CELLACE_H
+#endif // FACTORYCELL_H
