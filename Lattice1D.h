@@ -21,14 +21,15 @@
 
 class Lattice1D: public Lattice {
   public:
-    Lattice1D(std::fstream& file, const FactoryCell& factory);
-    Lattice1D(const int& size, const FactoryCell& factory);
+    Lattice1D(std::fstream& file, FactoryCell& factory);
+    Lattice1D(const int& size, FactoryCell& factory);
     virtual ~Lattice1D();
     void nextGeneration();
     std::size_t Population() const;
     std::ostream& display(std::ostream& os) const;
   protected:
     std::vector<Cell*> lattice_;
+    int size_;
 };
 
 

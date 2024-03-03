@@ -21,13 +21,18 @@
 
 class Lattice1D_open: public Lattice1D {
   public:
-    Cell* operator[](Position& position);
+    Lattice1D_open(const int& size, FactoryCell& factory, bool open_type);
+    Cell* operator[](const Position& position) const;
+  
+  private:
+    bool open_type_; // 0: open, 1: periodic
+    Cell* border_;
 };
 
 
 class Lattice1D_periodic: public Lattice1D {
   public:
-    Cell* operator[](Position& position);
+    Cell* operator[](const Position& position) const;
 };
 
 

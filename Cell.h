@@ -28,7 +28,7 @@ class Cell {
   void setState(State state) { state_ = state; }
   virtual void nextState(const Lattice& reticulo) = 0;
   virtual void updateState() { state_ = next_state_; }
-  friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
+  friend std::ostream& operator<<(std::ostream& os, Cell& cell);
 
   protected:
   virtual void display(std::ostream& os) = 0;
@@ -38,6 +38,10 @@ class Cell {
 };
 
 
+std::ostream& operator<<(std::ostream& os, Cell& cell) {
+  cell.display(os);
+  return os;
+}
 
 
 
