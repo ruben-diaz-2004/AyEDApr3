@@ -9,11 +9,13 @@
   */
 
 
-#include "Position.h"
+#include "Cell.h"
 
 
 
-template <int DIM, class Coordinate_t>
-Coor_t PositionDim<DIM, Coordinate_t>::operator[](unsigned int i) const {
-  return coordinates_[i];
+
+
+std::ostream& operator<<(std::ostream& os, Cell& cell) {
+  cell.display(os);
+  return os;
 }

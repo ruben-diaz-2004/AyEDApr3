@@ -9,21 +9,10 @@
   */
 
 
-#ifndef CELLLIFE_H
-#define CELLLIFE_H
+#include "Lattice.h"
 
 
-#include "Cell.h"
-
-
-
-class CellLife: public Cell {
-  public:
-  CellLife(Position& position, const State& state) : Cell(position, state) {}
-};
-
-
-
-
-
-#endif // CELLLIFE_H
+std::ostream& operator<<(std::ostream& os, const Lattice& lattice) {
+  lattice.display(os);
+  return os;
+}

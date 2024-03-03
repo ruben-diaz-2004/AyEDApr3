@@ -38,10 +38,7 @@ class Cell {
 };
 
 
-std::ostream& operator<<(std::ostream& os, Cell& cell) {
-  cell.display(os);
-  return os;
-}
+
 
 
 

@@ -12,13 +12,13 @@ CXXFLAGS = -std=c++17 -g
 
 
 
-all: CellularAutomaton
+all: AutomataGeneral
 
-CellularAutomaton: juegodelavida.cc cell.cc lattice.cc fronteras.cc
+AutomataGeneral: juegodelavida.cc 1Dtypes.cc 2Dtypes.cc Acetypes.cc Lattice1D.cc Lattice2D.cc Lifetypes.cc Cell.cc Lattice.cc
 		$(CXX) $(CXXFLAGS) -o $@ $^
 	
 
 	
 .PHONY: all clean
 clean:
-		rm -f CellularAutomaton
+		rm -f AutomataGeneral

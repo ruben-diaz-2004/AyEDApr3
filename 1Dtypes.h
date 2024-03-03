@@ -23,7 +23,8 @@ class Lattice1D_open: public Lattice1D {
   public:
     Lattice1D_open(const int& size, FactoryCell& factory, bool open_type);
     Lattice1D_open(std::fstream& file, FactoryCell& factory, bool open_type);
-    Cell* operator[](Position& position) const;
+    ~Lattice1D_open();
+    Cell& operator[](Position& position) const;
   
   private:
     bool open_type_; // 0: open, 1: periodic
@@ -35,7 +36,7 @@ class Lattice1D_periodic: public Lattice1D {
   public:
     Lattice1D_periodic(const int& size, FactoryCell& factory) : Lattice1D(size, factory) {}
     Lattice1D_periodic(std::fstream& file, FactoryCell& factory) : Lattice1D(file, factory) {}
-    Cell* operator[](Position& position) const;
+    Cell& operator[](Position& position) const;
 };
 
 

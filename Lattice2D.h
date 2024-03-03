@@ -26,9 +26,9 @@ class Lattice2D: public Lattice {
     virtual ~Lattice2D();
     virtual void nextGeneration();
     std::size_t Population() const;
-    std::ostream& display(std::ostream& os) const;
 
   protected:
+    std::ostream& display(std::ostream& os) const;
     my_vector<my_vector<Cell*>> lattice_;
 };
 

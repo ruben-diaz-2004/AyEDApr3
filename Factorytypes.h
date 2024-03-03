@@ -14,7 +14,7 @@
 #define FACTORYTYPES_H
 
 #include "Cell.h"
-#include "CellACE.h"
+#include "CellAce.h"
 #include "Acetypes.h"
 #include "Lifetypes.h"
 #include "FactoryCell.h"

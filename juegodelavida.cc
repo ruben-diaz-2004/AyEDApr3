@@ -12,8 +12,8 @@
 #include <iostream>
 #include <fstream>
 #include "parameters.cc"
-#include "cell.h"
-#include "lattice.h"
+#include "Cell.h"
+#include "Lattice.h"
 #include "1Dtypes.h"
 #include "2Dtypes.h"
 #include "Acetypes.h"
@@ -21,6 +21,9 @@
 #include "my_vector.h"
 #include "FactoryCell.h"
 #include "Factorytypes.h"
+#include "position.h"
+
+#include <iostream>
 #include <sstream>
 #include <string>
 

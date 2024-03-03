@@ -11,7 +11,9 @@
 
 
 #include "Lattice2D.h"
-
+#include "FactoryCell.h"
+#include "Cell.h"
+#include "position.h"
 
 Lattice2D::Lattice2D(std::fstream& file, FactoryCell& factory) {
     // line 1: dimension (must be 2)
@@ -32,10 +34,13 @@ Lattice2D::Lattice2D(std::fstream& file, FactoryCell& factory) {
     lattice_[i].resize(columns);
   }
 
+  State state;
+  std::string line;
+  std::getline(file, line);
   for (int i = 0; i < rows; i++) {
+    std::getline(file, line);
     for (int j = 0; j < columns; j++) {
-      char state;
-      file >> state;
+      state = line[j];
       Position* position = new PositionDim<2>(2, i, j);
       lattice_[i][j] = factory.createCell(*position, state);
     }

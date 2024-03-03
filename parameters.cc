@@ -65,7 +65,7 @@ parameters parse_args(int argc, char* argv[]) {
           options.border = 3;
         }
     } else if (*it == "-init") {
-      options.filename = std::ifstream(*++it);
+      options.filename = std::fstream(*++it);
       options.initial_file = true;
     }
     else {

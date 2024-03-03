@@ -19,7 +19,7 @@ void CellLife23_3::updateState() {
 
 void CellLife23_3::display(std::ostream& os) {
   if (state_ == '0') {
-    os << " ";
+    os << "-";
   } else {
     os << "X";
   }
@@ -40,7 +40,7 @@ void CellLife23_3::nextState(const Lattice& reticulo) {
   for (int i = position_x - 1; i <= position_x + 1; i++) {
     for (int j = position_y - 1; j <= position_y + 1; j++) {
       aux_pos = new PositionDim<2>(2, i, j);
-      alive_neighbours += reticulo[*aux_pos]->getState();
+      alive_neighbours += reticulo[*aux_pos].getState();
     }
   }
   alive_neighbours -= C;
@@ -69,7 +69,7 @@ void CellLife51_346::updateState() {
 
 void CellLife51_346::display(std::ostream& os) {
   if (state_ == '0') {
-    os << " ";
+    os << "-";
   } else {
     os << "X";
   }
@@ -91,7 +91,7 @@ void CellLife51_346::nextState(const Lattice& reticulo) {
   for (int i = position_x - 1; i <= position_x + 1; i++) {
     for (int j = position_y - 1; j <= position_y + 1; j++) {
       aux_pos = new PositionDim<2>(2, i, j);
-      alive_neighbours += reticulo[*aux_pos]->getState();
+      alive_neighbours += reticulo[*aux_pos].getState();
     }
   }
   alive_neighbours -= C;

@@ -38,7 +38,9 @@ class PositionDim: public Position {
     }
     va_end(vl);
   }
-  Coor_t operator[](unsigned int) const;
+  Coor_t operator[](unsigned int i) const {
+    return Coordinates[i];
+  }
   
   private:
   Coor_t Coordinates[Dim];

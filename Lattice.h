@@ -14,15 +14,14 @@
 #define LATTICE_H
 
 #include <iostream>
-#include "Position.h"
-#include "2Dtypes.h"
+#include "position.h"
+
 
 class Cell;
 
 class Lattice {
   public:
-
-    virtual Cell* operator[](Position&) const = 0;
+    virtual Cell& operator[](Position&) const = 0;
     virtual void nextGeneration() = 0;
     virtual std::size_t Population() const = 0;
     friend std::ostream& operator<<(std::ostream& os, const Lattice& lattice);
@@ -30,6 +29,7 @@ class Lattice {
   protected:
     virtual std::ostream& display(std::ostream& os) const = 0;
 };
+
 
 
 

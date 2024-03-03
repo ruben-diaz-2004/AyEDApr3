@@ -12,6 +12,8 @@
 
 #include "Lattice1D.h"
 #include "position.h"
+#include "FactoryCell.h"
+
 
 Lattice1D::Lattice1D(const int& size, FactoryCell& factory) {
   size_ = size;
@@ -25,18 +27,21 @@ Lattice1D::Lattice1D(const int& size, FactoryCell& factory) {
 
 
 Lattice1D::Lattice1D(std::fstream& file, FactoryCell& factory) {
-  int dimension;
+  char dimension;
   file >> dimension;
   std::cout << "Dimension: " << dimension << std::endl;
 
   file >> size_;
   lattice_.resize(size_);
   Position* pos;
-  char state;
+  State state;
 
+  std::string line;
+  std::getline(file, line);
+  std::getline(file, line);
   for (int i = 0; i < size_; i++) {
     pos = new PositionDim<1>(1, i);
-    file >> state;
+    state = line[i];
     lattice_[i] = factory.createCell(*pos, state);
   }
 }
@@ -44,6 +49,7 @@ Lattice1D::Lattice1D(std::fstream& file, FactoryCell& factory) {
 
 
 Lattice1D::~Lattice1D() {
+  std::cout << "Destructor" << std::endl;
   for (int i = 0; i < size_; i++) {
     delete lattice_[i];
   }

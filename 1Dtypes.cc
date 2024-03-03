@@ -10,7 +10,9 @@
 
 
 #include "1Dtypes.h"
-
+#include "FactoryCell.h"
+#include "Cell.h"
+#include "position.h"
 
 
 Lattice1D_open::Lattice1D_open(const int& size, FactoryCell& factory, bool open_type) : Lattice1D(size, factory), open_type_(open_type) {
@@ -37,23 +39,27 @@ Lattice1D_open::Lattice1D_open(std::fstream& file, FactoryCell& factory, bool op
 }
 
 
+Lattice1D_open::~Lattice1D_open() {
+  delete border_;
+}
 
-Cell* Lattice1D_open::operator[](Position& position) const {
+
+Cell& Lattice1D_open::operator[](Position& position) const {
   int pos = position[0];
   if (pos < 0 || pos >= size_) {
-    return border_;
+    return *border_;
   } else {
-    return lattice_[pos];
+    return *lattice_[pos];
   }
 }
 
 
-Cell* Lattice1D_periodic::operator[](Position& position) const {
+Cell& Lattice1D_periodic::operator[](Position& position) const {
   int pos = position[0];
   if (pos < 0) {
     pos = size_-1;
   } else if (pos >= size_) {
     pos = 0;
   }
-  return lattice_[pos];
+  return *lattice_[pos];
 }

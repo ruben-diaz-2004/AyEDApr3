@@ -26,8 +26,8 @@ class Lattice1D: public Lattice {
     virtual ~Lattice1D();
     void nextGeneration();
     std::size_t Population() const;
-    std::ostream& display(std::ostream& os) const;
   protected:
+    std::ostream& display(std::ostream& os) const;
     std::vector<Cell*> lattice_;
     int size_;
 };
