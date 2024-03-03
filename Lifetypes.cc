@@ -19,9 +19,9 @@ void CellLife23_3::updateState() {
 
 void CellLife23_3::display(std::ostream& os) {
   if (state_ == '0') {
-    os << "-";
+    os << " ";
   } else {
-    os << "X";
+    os << "Q";
   }
 }
 
@@ -86,9 +86,9 @@ void CellLife51_346::updateState() {
 
 void CellLife51_346::display(std::ostream& os) {
   if (state_ == '0') {
-    os << "-";
+    os << " ";
   } else {
-    os << "X";
+    os << "&";
   }
 }
 

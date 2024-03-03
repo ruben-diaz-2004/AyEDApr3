@@ -75,13 +75,13 @@ int main(int argc, char *argv[]) {
         lattice = new Lattice2D_reflective(options.size_x, options.size_y, *factory);
       }
       break;
-    // case 3:
-    //   if (options.initial_file) {
-    //     lattice = new Lattice_NoBorder(options.filename);
-    //   } else {
-    //     lattice = new Lattice_NoBorder(options.size_x, options.size_y);
-    //   }
-    //   break;
+    case 3:
+      if (options.initial_file) {
+        lattice = new Lattice2D_NoBorder(options.filename, *factory);
+      } else {
+        lattice = new Lattice2D_NoBorder(options.size_x, options.size_y, *factory);
+      }
+      break;
   }
   
 

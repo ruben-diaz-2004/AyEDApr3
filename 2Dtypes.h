@@ -27,13 +27,17 @@ class Lattice2D_reflective: public Lattice2D {
 };
 
 
-// class Lattice2D_NoBorder: public Lattice2D {
-//   public:
-//     Cell* operator[](Position& position);
-//     void nextGeneration();
-//   private:
-//     FactoryCell* factory_;
-// };
+class Lattice2D_NoBorder: public Lattice2D {
+  public:
+    Lattice2D_NoBorder(std::fstream& file, FactoryCell& factory) : Lattice2D(file, factory) { factory_ = &factory; }
+    Lattice2D_NoBorder(const int& rows, const int& columns, FactoryCell& factory) : Lattice2D(rows, columns, factory) { factory_ = &factory; }
+    Cell& operator[](Position& position) const;
+    void nextGeneration();
+    void CheckBorder();
+    void IncrementSize(char direction);
+  private:
+    FactoryCell* factory_;
+};
 
 
 #endif // TYPES_H

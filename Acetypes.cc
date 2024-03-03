@@ -19,9 +19,9 @@ void CellACE110::updateState() {
 
 void CellACE110::display(std::ostream& os) {
   if (state_ == '0') {
-    os << "-";
+    os << " ";
   } else {
-    os << "X";
+    os << "#";
   }
 }
 
@@ -53,7 +53,7 @@ void CellACE30::updateState() {
 
 void CellACE30::display(std::ostream& os) {
   if (state_ == '0') {
-    os << "-";
+    os << " ";
   } else {
     os << "X";
   }
