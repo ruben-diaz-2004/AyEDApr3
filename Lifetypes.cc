@@ -36,14 +36,31 @@ void CellLife23_3::nextState(const Lattice& reticulo) {
   int position_y = position_[1];
 
   Position* aux_pos;
-
-  for (int i = position_x - 1; i <= position_x + 1; i++) {
-    for (int j = position_y - 1; j <= position_y + 1; j++) {
-      aux_pos = new PositionDim<2>(2, i, j);
-      alive_neighbours += reticulo[*aux_pos].getState();
-    }
-  }
-  alive_neighbours -= C;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y);
+  State E = reticulo[*aux_pos].getState();
+  if (E == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y);
+  State W = reticulo[*aux_pos].getState();
+  if (W == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x, position_y + 1);
+  State S = reticulo[*aux_pos].getState();
+  if (S == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x, position_y - 1);
+  State N = reticulo[*aux_pos].getState();
+  if (N == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y + 1);
+  State SE = reticulo[*aux_pos].getState();
+  if (SE == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y - 1);
+  State NW = reticulo[*aux_pos].getState();
+  if (NW == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y - 1);
+  State NE = reticulo[*aux_pos].getState();
+  if (NE == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y + 1);
+  State SW = reticulo[*aux_pos].getState();
+  if (SW == '1') alive_neighbours++;
+  
 
   if (C == '0') {
     if (alive_neighbours == 3) {
@@ -87,14 +104,30 @@ void CellLife51_346::nextState(const Lattice& reticulo) {
   int position_y = position_[1];
 
   Position* aux_pos;
-
-  for (int i = position_x - 1; i <= position_x + 1; i++) {
-    for (int j = position_y - 1; j <= position_y + 1; j++) {
-      aux_pos = new PositionDim<2>(2, i, j);
-      alive_neighbours += reticulo[*aux_pos].getState();
-    }
-  }
-  alive_neighbours -= C;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y);
+  State E = reticulo[*aux_pos].getState();
+  if (E == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y);
+  State W = reticulo[*aux_pos].getState();
+  if (W == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x, position_y + 1);
+  State S = reticulo[*aux_pos].getState();
+  if (S == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x, position_y - 1);
+  State N = reticulo[*aux_pos].getState();
+  if (N == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y + 1);
+  State SE = reticulo[*aux_pos].getState();
+  if (SE == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y - 1);
+  State NW = reticulo[*aux_pos].getState();
+  if (NW == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x + 1, position_y - 1);
+  State NE = reticulo[*aux_pos].getState();
+  if (NE == '1') alive_neighbours++;
+  aux_pos = new PositionDim<2>(2, position_x - 1, position_y + 1);
+  State SW = reticulo[*aux_pos].getState();
+  if (SW == '1') alive_neighbours++;
 
   if (C == '0') {
     if (alive_neighbours == 3 || alive_neighbours == 4 || alive_neighbours == 6) {

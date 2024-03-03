@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/AutomataGeneral",
-            "args": ["-init", "reflective2.txt", "-cell", "Life51_3", "-border", "reflective" ],
+            "args": ["-init", "reflective2.txt", "-cell", "Life23_3", "-border", "reflective" ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
