@@ -36,11 +36,26 @@ Lattice2D::Lattice2D(std::fstream& file, FactoryCell& factory) {
     for (int j = 0; j < columns; j++) {
       char state;
       file >> state;
-      Position* position = new PositionDim<2>(i, j);
+      Position* position = new PositionDim<2>(2, i, j);
       lattice_[i][j] = factory.createCell(*position, state);
     }
   }
 }
+
+
+Lattice2D::Lattice2D(const int& rows, const int& columns, FactoryCell& factory) {
+  lattice_.resize(rows);
+  for (int i = 0; i < rows; i++) {
+    lattice_[i].resize(columns);
+  }
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+      Position* position = new PositionDim<2>(2, i, j);
+      lattice_[i][j] = factory.createCell(*position, '0');
+    }
+  }
+}
+
 
 
 Lattice2D::~Lattice2D() {

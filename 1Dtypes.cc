@@ -25,7 +25,20 @@ Lattice1D_open::Lattice1D_open(const int& size, FactoryCell& factory, bool open_
 }
 
 
-Cell* Lattice1D_open::operator[](const Position& position) const {
+Lattice1D_open::Lattice1D_open(std::fstream& file, FactoryCell& factory, bool open_type) : Lattice1D(file, factory), open_type_(open_type) {
+  Position* position;
+  if (open_type_ == 0) {
+    position = new PositionDim<1>(1, -1);
+    border_ = factory.createCell(*position, '0');
+  } else {
+    position = new PositionDim<1>(1, -1);
+    border_ = factory.createCell(*position, '1');
+  }
+}
+
+
+
+Cell* Lattice1D_open::operator[](Position& position) const {
   int pos = position[0];
   if (pos < 0 || pos >= size_) {
     return border_;
@@ -35,7 +48,7 @@ Cell* Lattice1D_open::operator[](const Position& position) const {
 }
 
 
-Cell* Lattice1D_periodic::operator[](const Position& position) const {
+Cell* Lattice1D_periodic::operator[](Position& position) const {
   int pos = position[0];
   if (pos < 0) {
     pos = size_-1;

@@ -15,13 +15,14 @@
 
 #include <iostream>
 #include "Position.h"
+#include "2Dtypes.h"
 
 class Cell;
 
 class Lattice {
   public:
 
-    virtual Cell* operator[](const Position&) const = 0;
+    virtual Cell* operator[](Position&) const = 0;
     virtual void nextGeneration() = 0;
     virtual std::size_t Population() const = 0;
     friend std::ostream& operator<<(std::ostream& os, const Lattice& lattice);

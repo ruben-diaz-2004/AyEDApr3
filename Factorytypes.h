@@ -23,6 +23,7 @@
 
 class FactoryCellACE110: public FactoryCell {
   public:
+  FactoryCellACE110() {}
   Cell* createCell(Position& position, const State& state) {
     return new CellACE110(position, state);
   }

@@ -18,7 +18,8 @@
 
 class FactoryCell {
   public:
-  virtual Cell* createCell(const Position& position, const State& state) = 0;
+  FactoryCell() {}
+  virtual Cell* createCell(Position& position, const State& state) = 0;
 };
 
 

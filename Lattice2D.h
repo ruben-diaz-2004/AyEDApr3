@@ -22,6 +22,7 @@
 class Lattice2D: public Lattice {
   public:
     Lattice2D(std::fstream& file, FactoryCell& factory);
+    Lattice2D(const int& rows, const int& columns, FactoryCell& factory);
     virtual ~Lattice2D();
     virtual void nextGeneration();
     std::size_t Population() const;

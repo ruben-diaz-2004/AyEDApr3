@@ -13,7 +13,7 @@
 #include "2Dtypes.h"
 
 
-Cell* Lattice2D_reflective::operator[](Position& position) {
+Cell* Lattice2D_reflective::operator[](Position& position) const {
   int x = position[0];
   int y = position[1];
 
