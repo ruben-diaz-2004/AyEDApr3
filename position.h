@@ -39,7 +39,12 @@ class PositionDim: public Position {
     va_end(vl);
   }
   Coor_t operator[](unsigned int i) const {
-    return Coordinates[i];
+    // return Coordinates[i];
+    try {
+      return Coordinates[i];
+    } catch (const std::exception& e) {
+      std::cerr << e.what() << '\n';
+    }
   }
   
   private:
