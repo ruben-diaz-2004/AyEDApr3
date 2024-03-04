@@ -120,13 +120,13 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
   switch (direction) {
     case 'E':
       for (int i{0}; i < lattice_.size(); ++i) {
-        new_position = new PositionDim<2>(2, lattice_[i].size()-(-(lattice_[i].negative_index()+1)), i+(lattice_.negative_index()+1));
+        new_position = new PositionDim<2>(2, i+(lattice_.negative_index()+1), lattice_[i].size()-(-(lattice_[i].negative_index()+1)));
         lattice_[i].push_back(factory_->createCell(*new_position, '0'));
       }
       break;
     case 'W':
       for (int i{0}; i < lattice_.size(); ++i) {
-        new_position = new PositionDim<2>(2, lattice_[i].negative_index(), i+(lattice_.negative_index()+1));
+        new_position = new PositionDim<2>(2, i+(lattice_.negative_index()+1), lattice_[i].negative_index());
         lattice_[i].push_front(factory_->createCell(*new_position, '0'));
         lattice_[i].DecrementNegativeIndex();
       }
@@ -135,7 +135,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
       new_row.resize(lattice_[0].size());
       new_row.SetNegativeIndex(lattice_[0].negative_index());
       for (int i{0}; i < lattice_[0].size(); ++i) {
-        new_position = new PositionDim<2>(2, i+(lattice_[0].negative_index()+1), lattice_.negative_index());
+        new_position = new PositionDim<2>(2, lattice_.negative_index(), i+(lattice_[0].negative_index()+1));
         new_row[i] = factory_->createCell(*new_position, '0');
       }
       lattice_.push_front(new_row);
@@ -145,7 +145,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
       new_row.resize(lattice_[0].size());
       new_row.SetNegativeIndex(lattice_[0].negative_index());
       for (int i{0}; i < lattice_[0].size(); ++i) {
-        new_position = new PositionDim<2>(2, i+(lattice_[0].negative_index()+1), lattice_.size()-(-(lattice_.negative_index()+1)));
+        new_position = new PositionDim<2>(2, lattice_.size()-(-(lattice_.negative_index()+1)), i+(lattice_[0].negative_index()+1));
         new_row[i] = factory_->createCell(*new_position, '0');
       }
       lattice_.push_back(new_row);

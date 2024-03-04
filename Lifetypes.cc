@@ -19,9 +19,9 @@ void CellLife23_3::updateState() {
 
 void CellLife23_3::display(std::ostream& os) {
   if (state_ == '0') {
-    os << " ";
+    os << "-";
   } else {
-    os << "Q";
+    os << "X";
   }
 }
 
@@ -32,8 +32,8 @@ void CellLife23_3::nextState(const Lattice& reticulo) {
 
   const State C = state_;
 
-  int position_x = position_[0];
-  int position_y = position_[1];
+  int position_x = position_[1];
+  int position_y = position_[0];
 
   Position* aux_pos;
   aux_pos = new PositionDim<2>(2, position_x + 1, position_y);
@@ -88,7 +88,7 @@ void CellLife51_346::display(std::ostream& os) {
   if (state_ == '0') {
     os << " ";
   } else {
-    os << "&";
+    os << "X";
   }
 }
 
@@ -100,8 +100,8 @@ void CellLife51_346::nextState(const Lattice& reticulo) {
 
   const State C = state_;
 
-  int position_x = position_[0];
-  int position_y = position_[1];
+  int position_x = position_[1];
+  int position_y = position_[0];
 
   Position* aux_pos;
   aux_pos = new PositionDim<2>(2, position_x + 1, position_y);

@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/AutomataGeneral",
-            "args": ["-init", "reflective2.txt", "-cell", "Life23_3", "-border", "noborder" ],
+            "args": ["-init", "diego.txt", "-cell", "Life23_3", "-border", "noborder" ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

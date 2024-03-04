@@ -21,7 +21,7 @@ void CellACE110::display(std::ostream& os) {
   if (state_ == '0') {
     os << " ";
   } else {
-    os << "#";
+    os << "X";
   }
 }
 
