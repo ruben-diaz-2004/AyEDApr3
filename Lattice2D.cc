@@ -15,11 +15,14 @@
 #include "Cell.h"
 #include "position.h"
 
+
+/**
+ * Constructor de un retículo a partir de un fichero
+*/
 Lattice2D::Lattice2D(std::fstream& file, FactoryCell& factory) {
     // line 1: dimension (must be 2)
     // line 2: number of rows
     // line 3: number of columns
-    
   int dimension;
   file >> dimension;
   if (dimension != 2) {
@@ -45,9 +48,14 @@ Lattice2D::Lattice2D(std::fstream& file, FactoryCell& factory) {
       lattice_[i][j] = factory.createCell(*position, state);
     }
   }
+  rows_ = rows;
+  columns_ = columns;
 }
 
 
+/**
+ * Constructor de un retículo a partir de un número de filas y columnas
+*/
 Lattice2D::Lattice2D(const int& rows, const int& columns, FactoryCell& factory) {
   lattice_.resize(rows);
   for (int i = 0; i < rows; i++) {
@@ -59,10 +67,15 @@ Lattice2D::Lattice2D(const int& rows, const int& columns, FactoryCell& factory) 
       lattice_[i][j] = factory.createCell(*position, '0');
     }
   }
+  rows_ = rows;
+  columns_ = columns;
 }
 
 
 
+/**
+ * Destructor de la clase Lattice2D
+*/
 Lattice2D::~Lattice2D() {
   for (int i = 0; i < lattice_.size(); i++) {
     for (int j = 0; j < lattice_[i].size(); j++) {
@@ -72,6 +85,9 @@ Lattice2D::~Lattice2D() {
 }
 
 
+/**
+ * Operador de acceso a la celda de la posición dada
+*/
 void Lattice2D::nextGeneration() {
   for (int i = 0; i < lattice_.size(); i++) {
     for (int j = 0; j < lattice_[i].size(); j++) {
@@ -86,6 +102,9 @@ void Lattice2D::nextGeneration() {
 }
 
 
+/**
+ * Método que devuelve el número de celdas vivas en el retículo
+*/
 std::size_t Lattice2D::Population() const {
   std::size_t population = 0;
   for (int i = 0; i < lattice_.size(); i++) {
@@ -99,7 +118,27 @@ std::size_t Lattice2D::Population() const {
 }
 
 
+/**
+ * Método que muestra el retículo
+*/
 std::ostream& Lattice2D::display(std::ostream& os) const {
+  for (int i = 0; i < lattice_.size(); i++) {
+    for (int j = 0; j < lattice_[i].size(); j++) {
+      os << *lattice_[i][j];
+    }
+    os << std::endl;
+  }
+  return os;
+}
+
+
+/**
+ * Método que muestra el retículo en un fichero
+*/
+std::ofstream& Lattice2D::displayfile(std::ofstream& os) const {
+  os << 2 << std::endl;
+  os << rows_ << std::endl;
+  os << columns_ << std::endl;
   for (int i = 0; i < lattice_.size(); i++) {
     for (int j = 0; j < lattice_[i].size(); j++) {
       os << *lattice_[i][j];

@@ -14,7 +14,9 @@
 
 
 
-
+/**
+ * Operador de inserción en flujo para mostrar una célula
+*/
 std::ostream& operator<<(std::ostream& os, Cell& cell) {
   cell.display(os);
   return os;

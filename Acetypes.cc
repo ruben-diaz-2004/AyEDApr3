@@ -13,10 +13,18 @@
 #include "Acetypes.h"
 #include "1Dtypes.h"
 
+
+/**
+ * Método que actualiza el estado de la célula
+ */
 void CellACE110::updateState() {
   state_ = next_state_;
 }
 
+
+/**
+ * Método para imprimir la célula
+ */
 void CellACE110::display(std::ostream& os) {
   if (state_ == '0') {
     os << " ";
@@ -25,6 +33,10 @@ void CellACE110::display(std::ostream& os) {
   }
 }
 
+
+/**
+ * Método que calcula el estado siguiente de la célula
+ */
 void CellACE110::nextState(const Lattice& reticulo) {
   const State C = state_;
   State next_state{0};
@@ -47,10 +59,18 @@ void CellACE110::nextState(const Lattice& reticulo) {
 
 
 
+/**
+ * Método que actualiza el estado de la célula
+ */
 void CellACE30::updateState() {
   state_ = next_state_;
 }
 
+
+
+/**
+ * Método para imprimir la célula
+ */
 void CellACE30::display(std::ostream& os) {
   if (state_ == '0') {
     os << " ";
@@ -60,6 +80,10 @@ void CellACE30::display(std::ostream& os) {
 }
 
 
+
+/**
+ * Método que calcula el estado siguiente de la célula
+ */
 void CellACE30::nextState(const Lattice& reticulo) {
   const State C = state_;
   State next_state{0};

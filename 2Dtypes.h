@@ -23,7 +23,6 @@ class Lattice2D_reflective: public Lattice2D {
     Lattice2D_reflective(std::fstream& file, FactoryCell& factory) : Lattice2D(file, factory) {}
     Lattice2D_reflective(const int& rows, const int& columns, FactoryCell& factory) : Lattice2D(rows, columns, factory) {}
     Cell& operator[](Position& position) const;
-
 };
 
 

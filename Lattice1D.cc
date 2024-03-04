@@ -15,6 +15,9 @@
 #include "FactoryCell.h"
 
 
+/**
+ * Constructor de la clase Lattice1D
+*/
 Lattice1D::Lattice1D(const int& size, FactoryCell& factory) {
   size_ = size;
   lattice_.resize(size);
@@ -26,6 +29,9 @@ Lattice1D::Lattice1D(const int& size, FactoryCell& factory) {
 }
 
 
+/**
+ * Constructor de la clase Lattice1D mediante fichero
+*/
 Lattice1D::Lattice1D(std::fstream& file, FactoryCell& factory) {
   char dimension;
   file >> dimension;
@@ -48,6 +54,9 @@ Lattice1D::Lattice1D(std::fstream& file, FactoryCell& factory) {
 
 
 
+/**
+ * Destructor de la clase Lattice1D
+*/
 Lattice1D::~Lattice1D() {
   std::cout << "Destructor" << std::endl;
   for (int i = 0; i < size_; i++) {
@@ -55,6 +64,10 @@ Lattice1D::~Lattice1D() {
   }
 }
 
+
+/**
+ * Método que calcula la siguiente generación del retículo
+*/
 void Lattice1D::nextGeneration() {
   for (int i = 0; i < size_; i++) {
     lattice_[i]->nextState(*this);
@@ -64,6 +77,11 @@ void Lattice1D::nextGeneration() {
   }
 }
 
+
+
+/**
+ * Método que muestra la población del retículo
+*/
 std::size_t Lattice1D::Population() const {
   std::size_t population = 0;
   for (int i = 0; i < size_; i++) {
@@ -75,7 +93,24 @@ std::size_t Lattice1D::Population() const {
 }
 
 
+/**
+ * Método que muestra el retículo
+*/
 std::ostream& Lattice1D::display(std::ostream& os) const {
+  for (int i = 0; i < size_; i++) {
+    os << *lattice_[i];
+  }
+  os << std::endl;
+  return os;
+}
+
+
+/**
+ * Método que muestra el retículo en un fichero
+*/
+std::ofstream& Lattice1D::displayfile(std::ofstream& os) const {
+  os << 1 << std::endl;
+  os << size_ << std::endl;
   for (int i = 0; i < size_; i++) {
     os << *lattice_[i];
   }

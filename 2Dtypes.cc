@@ -13,6 +13,10 @@
 #include "2Dtypes.h"
 #include "my_vector.h"
 
+
+/**
+ * Operador de indexación para obtener una celda del retículo
+*/
 Cell& Lattice2D_reflective::operator[](Position& position) const {
   int x = position[0];
   int y = position[1];
@@ -56,7 +60,9 @@ Cell& Lattice2D_reflective::operator[](Position& position) const {
 
 
 
-
+/**
+ * Operador de indexación para obtener una celda del retículo
+*/
 Cell& Lattice2D_NoBorder::operator[](Position& position) const {
   int x = position[0];
   int y = position[1];
@@ -74,6 +80,10 @@ Cell& Lattice2D_NoBorder::operator[](Position& position) const {
 }
 
 
+
+/**
+ * Método para calcular la siguiente generación del retículo
+*/
 void Lattice2D_NoBorder::nextGeneration() {
   CheckBorder();
 
@@ -93,6 +103,10 @@ void Lattice2D_NoBorder::nextGeneration() {
 }
 
 
+
+/**
+ * Método para comprobar si hay que incrementar el tamaño del retículo
+*/
 void Lattice2D_NoBorder::CheckBorder() {
   for (int i = 0; i < lattice_.size(); i++) {
     for (int j = 0; j < lattice_[0].size(); j++) {
@@ -114,6 +128,9 @@ void Lattice2D_NoBorder::CheckBorder() {
 
 
 
+/**
+ * Método para incrementar el tamaño del retículo
+*/
 void Lattice2D_NoBorder::IncrementSize(char direction) {
   Position* new_position;
   my_vector<Cell*> new_row;
@@ -123,6 +140,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
         new_position = new PositionDim<2>(2, i+(lattice_.negative_index()+1), lattice_[i].size()-(-(lattice_[i].negative_index()+1)));
         lattice_[i].push_back(factory_->createCell(*new_position, '0'));
       }
+      columns_++;
       break;
     case 'W':
       for (int i{0}; i < lattice_.size(); ++i) {
@@ -130,6 +148,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
         lattice_[i].push_front(factory_->createCell(*new_position, '0'));
         lattice_[i].DecrementNegativeIndex();
       }
+      columns_++;
       break;
     case 'N':
       new_row.resize(lattice_[0].size());
@@ -140,6 +159,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
       }
       lattice_.push_front(new_row);
       lattice_.DecrementNegativeIndex();
+      rows_++;
       break;
     case 'S':
       new_row.resize(lattice_[0].size());
@@ -149,6 +169,7 @@ void Lattice2D_NoBorder::IncrementSize(char direction) {
         new_row[i] = factory_->createCell(*new_position, '0');
       }
       lattice_.push_back(new_row);
+      rows_++;
       break;
   }
 }

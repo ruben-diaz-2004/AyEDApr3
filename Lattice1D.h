@@ -28,6 +28,7 @@ class Lattice1D: public Lattice {
     std::size_t Population() const;
   protected:
     std::ostream& display(std::ostream& os) const;
+    std::ofstream& displayfile(std::ofstream& os) const;
     std::vector<Cell*> lattice_;
     int size_;
 };

@@ -29,7 +29,10 @@ class Lattice2D: public Lattice {
 
   protected:
     std::ostream& display(std::ostream& os) const;
+    std::ofstream& displayfile(std::ofstream& os) const;
     my_vector<my_vector<Cell*>> lattice_;
+    int rows_;
+    int columns_;
 };
 
 

@@ -13,10 +13,17 @@
 #include "2Dtypes.h"
 
 
+/**
+ * Método que actualiza el estado de la célula
+*/
 void CellLife23_3::updateState() {
   state_ = next_state_;
 }
 
+
+/**
+ * Método para imprimir la célula
+ */
 void CellLife23_3::display(std::ostream& os) {
   if (state_ == '0') {
     os << "-";
@@ -26,6 +33,9 @@ void CellLife23_3::display(std::ostream& os) {
 }
 
 
+/**
+ * Método que calcula el estado siguiente de la célula
+ */
 void CellLife23_3::nextState(const Lattice& reticulo) {
   int alive_neighbours{0};
   State next_state;
@@ -79,11 +89,17 @@ void CellLife23_3::nextState(const Lattice& reticulo) {
 }
 
 
+/**
+ * Método que actualiza el estado de la célula
+ */
 void CellLife51_346::updateState() {
   state_ = next_state_;
 }
 
 
+/**
+ * Método para imprimir la célula
+ */
 void CellLife51_346::display(std::ostream& os) {
   if (state_ == '0') {
     os << " ";
@@ -94,6 +110,9 @@ void CellLife51_346::display(std::ostream& os) {
 
 
 
+/**
+ * Método que calcula el estado siguiente de la célula
+ */
 void CellLife51_346::nextState(const Lattice& reticulo) {
   int alive_neighbours{0};
   State next_state;
